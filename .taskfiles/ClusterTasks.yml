@@ -13,7 +13,7 @@ tasks:
     cmds:
       - kubectl apply --kustomize {{.CLUSTER_DIR}}/bootstrap/
       - cat {{.SOPS_AGE_KEY_FILE}} | kubectl -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
-      - kubectl apply --kustomize {{.CLUSTER_DIR}}/flux/flux-system/
+      - kubectl apply --kustomize {{.CLUSTER_DIR}}/base/flux-system/
       - task: reconcile
     preconditions:
       - sh: test -f {{.SOPS_AGE_KEY_FILE}}
@@ -77,6 +77,6 @@ tasks:
       - task: helmreleases
       - task: helmrepositories
       - task: gitrepositories
-      - task: certificates
+      # - task: certificates
       - task: ingresses
       - task: pods
