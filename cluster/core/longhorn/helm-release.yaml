@@ -36,5 +36,3 @@ spec:
       enabled: true
       ingressClassName: "traefik"
       host: "longhorn.${SECRET_DOMAIN}"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
